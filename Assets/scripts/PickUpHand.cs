@@ -17,16 +17,16 @@ public class PickUpHand : MonoBehaviour
             if (OVRInput.GetDown(OVRInput.RawButton.RHandTrigger))
             {
                 if (handStatus.RightHandStatus != "") return;
-                handStatus.setRightHand(other.name);
+                other.gameObject.gameObject.SetActive(false);
                 KeepRightObject = other.gameObject;
-                KeepRightObject.gameObject.SetActive(false);
+                handStatus.setRightHand(other.name);
             }
-            if (OVRInput.GetDown(OVRInput.RawButton.LHandTrigger))
+            else if (OVRInput.GetDown(OVRInput.RawButton.LHandTrigger))
             {
                 if (handStatus.LeftHandStatus != "") return;
-                handStatus.setLeftHand(other.name);
-                KeepLeftObject = other.gameObject;
-                KeepLeftObject.gameObject.SetActive(false);
+                other.gameObject.gameObject.SetActive(false);
+                KeepLeftObject = other.gameObject;         
+                handStatus.setLeftHand(other.name);              
             }
         }
     }
