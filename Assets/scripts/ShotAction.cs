@@ -26,6 +26,12 @@ public class ShotAction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        _viewModel();
+        _inputTrigger();
+    }
+
+    private void _viewModel()
+    {
         if (handStatus.RightHandStatus == "HandGun")
         {
             HandGunModel_Right.SetActive(true);
@@ -36,26 +42,30 @@ public class ShotAction : MonoBehaviour
             HandGunModel_Left.SetActive(true);
         }
         else HandGunModel_Left.SetActive(false);
+    }
 
+    private void _inputTrigger()
+    {
         if (handStatus.RightHandStatus == "HandGun" && OVRInput.GetDown(OVRInput.RawButton.RIndexTrigger))
         {
             audioSource.PlayOneShot(SE_shot);
-            SelectShot(GunLauncher_Right, 2000);
+            SelectShot(GunLauncher_Right, 1000);
         }
         if (handStatus.LeftHandStatus == "HandGun" && OVRInput.GetDown(OVRInput.RawButton.LIndexTrigger))
         {
             audioSource.PlayOneShot(SE_shot);
-            SelectShot(GunLauncher_Left, 2000);
+            SelectShot(GunLauncher_Left, 1000);
         }
     }
 
-    public void SelectShot(GameObject launcher,int Speed)
+    private void SelectShot(GameObject launcher,int Speed)
     {
         Vector3 force = launcher.transform.forward * Speed;
         var pos = launcher.transform.position;
         var rot = launcher.transform.localRotation;
   
         GameObject Copy_Shot = Instantiate(Original_Bullet, pos,rot) as GameObject;
+        Copy_Shot.name = "HandGunBullet";
         Copy_Shot.GetComponent<Rigidbody>().AddForce(force);
         Destroy(Copy_Shot, 2.0f);
     }
