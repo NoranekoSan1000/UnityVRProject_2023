@@ -8,6 +8,6 @@ public class SetDefaultPos : MonoBehaviour
 
     private void Update()
     {
-        transform.position = new Vector3(OVRCameraRig.transform.position.x, transform.position.y, OVRCameraRig.transform.position.z);
+        OVRCameraRig.transform.position = transform.position;
     }
 }
