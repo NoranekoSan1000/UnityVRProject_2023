@@ -5176,7 +5176,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   armature: {fileID: 845889730}
-  Center: {fileID: 229051254}
+  TrackingSpace: {fileID: 2096648391}
+  CenterCam: {fileID: 2096869241}
 --- !u!4 &1617213659
 Transform:
   m_ObjectHideFlags: 0

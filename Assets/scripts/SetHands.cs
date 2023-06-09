@@ -5,31 +5,27 @@ using UnityEngine;
 public class SetHands : MonoBehaviour
 {
     [SerializeField] private GameObject armature;
-    [SerializeField] private GameObject Center;
+    [SerializeField] private GameObject TrackingSpace;
+    [SerializeField] private GameObject CenterCam;
 
-    private CharacterController characterController;
 
     const float MOVE = 0.01f;
 
-    private void Start()
-    {
-        characterController = armature.GetComponent<CharacterController>();
-    }
 
     // Update is called once per frame
     void Update()
     {
         
-        var center = Center.transform.position;
+        var area = TrackingSpace.transform.position;
         var arm = armature.transform.position;
-        var ctrl = characterController.center;
+        var center = CenterCam.transform.position;
 
         Debug.Log(center.x + " " + arm.x);
         Debug.Log(center.y + " " + arm.y);
         Debug.Log(center.z + " " + arm.z);
 
-        ctrl.Set(ctrl.x, ctrl.y, ctrl.z);
-        
-       
+        area.z = -(center.z - arm.z);
+
+        if (Input.GetKeyDown(KeyCode.Y)) TrackingSpace.transform.position = new Vector3(area.x, area.y, area.z);
     }
 }
