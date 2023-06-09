@@ -6,7 +6,6 @@ using UnityEngine;
 public class MoveInput : MonoBehaviour
 {
     [SerializeField] private StarterAssetsInputs starterAssetsInput;
-    [SerializeField] private GameObject CenterEyeAnchor;
 
     public int inputX;
     public int inputY;
@@ -24,7 +23,10 @@ public class MoveInput : MonoBehaviour
         moveValue = new Vector2(inputX,inputY);
         starterAssetsInput.MoveInput(moveValue);
 
-        if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.RTouch)) starterAssetsInput.SprintInput(true);
+        if (OVRInput.Get(OVRInput.RawButton.LHandTrigger)) starterAssetsInput.SprintInput(true);
+        else starterAssetsInput.SprintInput(false);
+
+        if (OVRInput.GetDown(OVRInput.RawButton.RHandTrigger)) starterAssetsInput.JumpInput(true);
 
     }
 }

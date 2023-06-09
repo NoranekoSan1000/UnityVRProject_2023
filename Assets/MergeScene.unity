@@ -1023,7 +1023,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   starterAssetsInput: {fileID: 845889732}
-  CenterEyeAnchor: {fileID: 0}
   inputX: 0
   inputY: 0
   moveValue: {x: 0, y: 0}
@@ -3098,7 +3097,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 274649b0e221539409070ebf6c18918b, type: 3}
   - {fileID: 8300000, guid: a3194b8bbc96ef84fab1f98f4b7dae3e, type: 3}
   FootstepAudioVolume: 0.3
-  JumpHeight: 1.2
+  JumpHeight: 0.8
   Gravity: -15
   JumpTimeout: 0.3
   FallTimeout: 0.15
@@ -3125,7 +3124,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 1.8
-  m_Radius: 0.28
+  m_Radius: 0.4
   m_SlopeLimit: 45
   m_StepOffset: 0.25
   m_SkinWidth: 0.02
@@ -5157,7 +5156,7 @@ GameObject:
   - component: {fileID: 1617213659}
   - component: {fileID: 1617213658}
   m_Layer: 0
-  m_Name: SetHandsScript
+  m_Name: ReSetTrackingSpace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

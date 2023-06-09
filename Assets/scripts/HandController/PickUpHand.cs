@@ -23,7 +23,7 @@ public class PickUpHand : MonoBehaviour
         SearchObject();
         if (other.gameObject.tag == "HandGun")
         {
-            if (OVRInput.GetDown(OVRInput.RawButton.RHandTrigger))
+            if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.RTouch))
             {
                 if (handStatus.RightHandStatus != "") return;
                 mostCloseObject.SetActive(false);
@@ -35,14 +35,16 @@ public class PickUpHand : MonoBehaviour
 
     private void Update()
     {
-        if(OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch))
-        {
-            if (ReferenceEquals(KeepRightObject, null)) return;
-            KeepRightObject.transform.position = this.transform.position;
-            KeepRightObject.SetActive(true);
-            KeepRightObject = null;
-            handStatus.setRightHand("");
-        }
+        if (OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch)) DropObject();
+    }
+
+    private void DropObject()
+    {
+        if (ReferenceEquals(KeepRightObject, null)) return;
+        KeepRightObject.transform.position = this.transform.position;
+        KeepRightObject.SetActive(true);
+        KeepRightObject = null;
+        handStatus.setRightHand("");    
     }
 
     public void SearchObject()
