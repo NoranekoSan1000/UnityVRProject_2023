@@ -20,6 +20,7 @@ public class ReSetTrackingSpace : MonoBehaviour
 
 
         area.z = -(center.z - arm.z);
+        area.x = -(center.x - arm.x);
 
 
         if (Input.GetKeyDown(KeyCode.T)) TrackingSpace.transform.position = new Vector3(area.x, area.y, area.z);
