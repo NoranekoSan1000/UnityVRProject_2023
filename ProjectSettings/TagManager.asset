@@ -8,6 +8,8 @@ TagManager:
   - HandGun
   - CinemachineTarget
   - PlayerShot
+  - EnemyShot
+  - Environment
   layers:
   - Default
   - TransparentFX

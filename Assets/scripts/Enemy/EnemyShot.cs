@@ -16,7 +16,7 @@ public class EnemyShot : MonoBehaviour
 
     private void shot()
     {
-        SelectShot(gameObject, 200);
+        SelectShot(gameObject, 500);
         time = 0;
     }
 
