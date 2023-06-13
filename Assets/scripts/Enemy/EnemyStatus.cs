@@ -24,22 +24,24 @@ public class EnemyStatus : MonoBehaviour
 
     private void Update()
     {
+        transform.position = transform.parent.gameObject.transform.position;
         LookEnemy();
         if (hp <= 0) dead();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        hp -= 1;
+        if (other.tag != "PlayerShot") return;
+            hp -= 1;
         if (hp > 0) audioSource.PlayOneShot(SE_HitTarget);
         else audioSource.PlayOneShot(SE_Dead);
-        if (other.tag == "PlayerShot") Destroy(other.gameObject);
+        Destroy(other.gameObject);
     }
 
     private void dead()
     {
         if(alive) present();
-        Destroy(transform.parent.gameObject,1f);
+        Destroy(transform.parent.gameObject,0.3f);
     }
     private void present()
     {
