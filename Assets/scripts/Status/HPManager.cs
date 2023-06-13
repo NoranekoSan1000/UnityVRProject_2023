@@ -20,7 +20,7 @@ public class HPManager : MonoBehaviour
 
     public void Damage(in int damage)
     {
-        HP = HP + damage; 
+        HP = HP - damage; 
     }
 
     public void Heal(in int heal)

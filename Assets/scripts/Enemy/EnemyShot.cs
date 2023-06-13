@@ -10,7 +10,8 @@ public class EnemyShot : MonoBehaviour
 
     private void Update()
     {
-        time += Time.deltaTime;
+        LookEnemy();
+           time += Time.deltaTime;
         if (time > 2.0f) shot();
     }
 
@@ -36,8 +37,15 @@ public class EnemyShot : MonoBehaviour
 
     private void LookEnemy()
     {
-        var CharaDirection = PlayerCenter.transform.position - this.transform.position;
-        var lookRotation = Quaternion.LookRotation(CharaDirection, Vector3.up);
-        transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, 1.5f);
+        // ターゲットへの向きベクトル計算
+        var dir = PlayerCenter.transform.position - this.transform.position;
+
+        // ターゲットの方向への回転
+        var lookAtRotation = Quaternion.LookRotation(dir, Vector3.up);
+        // 回転補正
+        var offsetRotation = Quaternion.FromToRotation(Vector3.forward, Vector3.forward);
+
+        // 回転補正→ターゲット方向への回転の順に、自身の向きを操作する
+        this.transform.rotation = lookAtRotation * offsetRotation;
     }
 }
