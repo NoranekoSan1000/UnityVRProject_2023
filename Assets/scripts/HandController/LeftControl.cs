@@ -20,15 +20,27 @@ public class LeftControl : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        SearchObject();
+        
         if (other.gameObject.tag == "HandGun")
         {
+            SearchObject("HandGun");
             if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.LTouch))
             {
                 if (handStatus.LeftHandStatus != "") return;
                 mostCloseObject.gameObject.SetActive(false);
                 KeepLeftObject = mostCloseObject;         
                 handStatus.setLeftHand(other.tag);              
+            }
+        }
+        if (other.gameObject.tag == "AssaultRifle")
+        {
+            SearchObject("AssaultRifle");
+            if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.LTouch))
+            {
+                if (handStatus.LeftHandStatus != "") return;
+                mostCloseObject.gameObject.SetActive(false);
+                KeepLeftObject = mostCloseObject;
+                handStatus.setLeftHand(other.tag);
             }
         }
     }
@@ -47,9 +59,9 @@ public class LeftControl : MonoBehaviour
         handStatus.setLeftHand("");
     }
 
-        public void SearchObject()
+        public void SearchObject(string gun)
     {
-        targets = GameObject.FindGameObjectsWithTag("HandGun");
+        targets = GameObject.FindGameObjectsWithTag(gun);
         if(targets.Length == 0)
         {
             mostCloseObject = null;
