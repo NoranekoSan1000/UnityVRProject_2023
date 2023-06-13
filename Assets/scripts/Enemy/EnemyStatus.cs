@@ -13,12 +13,12 @@ public class EnemyStatus : MonoBehaviour
     AudioSource audioSource;
 
     private bool alive;
-    private int hp = 20;
+    private int hp = 10;
 
     // Start is called before the first frame update
     void Start()
     {
-        alive = false;
+        alive = true;
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -42,7 +42,7 @@ public class EnemyStatus : MonoBehaviour
         Destroy(transform.parent.gameObject,1f);
     }
     private void present()
-    {       
+    {
         _scoreManager.AddScore(100);
         alive = false;
     }
