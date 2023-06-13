@@ -6,6 +6,8 @@ TagManager:
   tags:
   - DropObject
   - HandGun
+  - CinemachineTarget
+  - PlayerShot
   layers:
   - Default
   - TransparentFX

@@ -58,6 +58,7 @@ public class ShotAction : MonoBehaviour
         }
     }
 
+
     private void SelectShot(GameObject launcher,int Speed)
     {
         Vector3 force = launcher.transform.forward * Speed;
@@ -65,6 +66,7 @@ public class ShotAction : MonoBehaviour
         var rot = launcher.transform.localRotation;
   
         GameObject Copy_Shot = Instantiate(Original_Bullet, pos,rot) as GameObject;
+        Copy_Shot.tag = "PlayerShot";
         Copy_Shot.name = "HandGunBullet";
         Copy_Shot.GetComponent<Rigidbody>().AddForce(force);
         Destroy(Copy_Shot, 2.0f);
