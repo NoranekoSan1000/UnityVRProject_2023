@@ -13,7 +13,7 @@ public class TimeManager : MonoBehaviour
     void Start()
     {
         timer = 180;
-        TimerActive = false;
+        TimerActive = true;
     }
 
     void Update()
