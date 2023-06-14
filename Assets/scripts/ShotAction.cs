@@ -19,7 +19,8 @@ public class ShotAction : MonoBehaviour
     [SerializeField] private AudioClip SE_shot;
     AudioSource audioSource;
 
-    private float ShotCoolTime = 0;
+    private float ShotCoolTime_L = 0;
+    private float ShotCoolTime_R = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,8 @@ public class ShotAction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ShotCoolTime >= 0) ShotCoolTime -= Time.deltaTime;
+        if (ShotCoolTime_L >= 0) ShotCoolTime_L -= Time.deltaTime;
+        if (ShotCoolTime_R >= 0) ShotCoolTime_R -= Time.deltaTime;
         _viewModel();
         _inputTrigger();
     }
@@ -77,17 +79,17 @@ public class ShotAction : MonoBehaviour
 
         if (handStatus.RightHandStatus == "AssaultRifle" && OVRInput.Get(OVRInput.RawButton.RIndexTrigger))
         {
-            if (ShotCoolTime > 0.1f) return;
+            if (ShotCoolTime_R > 0.1f) return;
             audioSource.PlayOneShot(SE_shot);
             SelectShot(GunLauncher_Right, 1200, "AssaultRifle");
-            ShotCoolTime = 0.25f;
+            ShotCoolTime_R = 0.25f;
         }
         if (handStatus.LeftHandStatus == "AssaultRifle" && OVRInput.Get(OVRInput.RawButton.LIndexTrigger))
         {
-            if (ShotCoolTime > 0.1f) return;
+            if (ShotCoolTime_L > 0.1f) return;
             audioSource.PlayOneShot(SE_shot);
             SelectShot(GunLauncher_Left, 1200, "AssaultRifle");
-            ShotCoolTime = 0.25f;
+            ShotCoolTime_L = 0.25f;
         }
     }
 
