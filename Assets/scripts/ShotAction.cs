@@ -13,6 +13,8 @@ public class ShotAction : MonoBehaviour
     [SerializeField] private GameObject HandGunModel_Left;
     [SerializeField] private GameObject AssaultRifleModel_Right;
     [SerializeField] private GameObject AssaultRifleModel_Left;
+    [SerializeField] private GameObject ShotGunModel_Right;
+    [SerializeField] private GameObject ShotGunModel_Left;
     [SerializeField] private GameObject GunLauncher_Right;
     [SerializeField] private GameObject GunLauncher_Left;
 
@@ -62,6 +64,18 @@ public class ShotAction : MonoBehaviour
             AssaultRifleModel_Left.SetActive(true);
         }
         else AssaultRifleModel_Left.SetActive(false);
+
+        if (handStatus.RightHandStatus == "ShotGun")
+        {
+            ShotGunModel_Right.SetActive(true);
+        }
+        else ShotGunModel_Right.SetActive(false);
+
+        if (handStatus.LeftHandStatus == "ShotGun")
+        {
+            ShotGunModel_Left.SetActive(true);
+        }
+        else ShotGunModel_Left.SetActive(false);
     }
 
     private void _inputTrigger()
@@ -90,6 +104,21 @@ public class ShotAction : MonoBehaviour
             audioSource.PlayOneShot(SE_shot);
             SelectShot(GunLauncher_Left, 1200, "AssaultRifle");
             ShotCoolTime_L = 0.25f;
+        }
+
+        if (handStatus.RightHandStatus == "ShotGun" && OVRInput.Get(OVRInput.RawButton.RIndexTrigger))
+        {
+            if (ShotCoolTime_R > 0.1f) return;
+            audioSource.PlayOneShot(SE_shot);
+            SelectShot(GunLauncher_Right, 1200, "ShotGun");
+            ShotCoolTime_R = 0.8f;
+        }
+        if (handStatus.LeftHandStatus == "ShotGun" && OVRInput.Get(OVRInput.RawButton.LIndexTrigger))
+        {
+            if (ShotCoolTime_L > 0.1f) return;
+            audioSource.PlayOneShot(SE_shot);
+            SelectShot(GunLauncher_Left, 1200, "ShotGun");
+            ShotCoolTime_L = 0.8f;
         }
     }
 

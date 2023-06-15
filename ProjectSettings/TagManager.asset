@@ -12,6 +12,7 @@ TagManager:
   - Environment
   - Enemy
   - AssaultRifle
+  - ShotGun
   layers:
   - Default
   - TransparentFX

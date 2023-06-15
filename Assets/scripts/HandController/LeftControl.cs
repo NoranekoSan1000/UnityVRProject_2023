@@ -43,6 +43,17 @@ public class LeftControl : MonoBehaviour
                 handStatus.setLeftHand(other.tag);
             }
         }
+        if (other.gameObject.tag == "ShotGun")
+        {
+            SearchObject("ShotGun");
+            if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.LTouch))
+            {
+                if (handStatus.LeftHandStatus != "") return;
+                mostCloseObject.gameObject.SetActive(false);
+                KeepLeftObject = mostCloseObject;
+                handStatus.setLeftHand(other.tag);
+            }
+        }
     }
 
     private void Update()

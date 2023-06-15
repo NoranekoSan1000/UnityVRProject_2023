@@ -43,6 +43,17 @@ public class PickUpHand : MonoBehaviour
                 handStatus.setRightHand(other.tag);
             }
         }
+        if (other.gameObject.tag == "ShotGun")
+        {
+            SearchObject("ShotGun");
+            if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.RTouch))
+            {
+                if (handStatus.RightHandStatus != "") return;
+                mostCloseObject.gameObject.SetActive(false);
+                KeepRightObject = mostCloseObject;
+                handStatus.setRightHand(other.tag);
+            }
+        }
     }
 
     private void Update()
