@@ -110,29 +110,31 @@ public class ShotAction : MonoBehaviour
         {
             if (ShotCoolTime_R > 0.1f) return;
             audioSource.PlayOneShot(SE_shot);
-            SelectShot(GunLauncher_Right, 1200, "ShotGun");
+            for (int i = 0; i < 7; i++) SelectShot(GunLauncher_Right, 1200, "ShotGun");
             ShotCoolTime_R = 0.8f;
         }
         if (handStatus.LeftHandStatus == "ShotGun" && OVRInput.Get(OVRInput.RawButton.LIndexTrigger))
         {
             if (ShotCoolTime_L > 0.1f) return;
             audioSource.PlayOneShot(SE_shot);
-            SelectShot(GunLauncher_Left, 1200, "ShotGun");
+            for (int i=0;i<7;i++) SelectShot(GunLauncher_Left, 1200, "ShotGun");
             ShotCoolTime_L = 0.8f;
         }
     }
 
-
     private void SelectShot(GameObject launcher,int Speed,string name)
-    {
-        Vector3 force = launcher.transform.forward * Speed;
+    { 
+        Vector3 force = launcher.transform.forward;
+        float disperse = 80f;
+        Vector3 shotgun_force = new Vector3(Random.Range(disperse, -disperse), Random.Range(disperse, -disperse), Random.Range(disperse, -disperse));
         var pos = launcher.transform.position;
         var rot = launcher.transform.localRotation;
-  
+        
         GameObject Copy_Shot = Instantiate(Original_Bullet, pos,rot) as GameObject;
         Copy_Shot.tag = "PlayerShot";
         Copy_Shot.name = name + "Bullet";
-        Copy_Shot.GetComponent<Rigidbody>().AddForce(force);
+        if (name == "ShotGun") Copy_Shot.GetComponent<Rigidbody>().AddForce(shotgun_force);
+        Copy_Shot.GetComponent<Rigidbody>().AddForce(force * Speed);
         Destroy(Copy_Shot, 2.0f);
     }
 }

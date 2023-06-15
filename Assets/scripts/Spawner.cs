@@ -5,17 +5,20 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public GameObject Enemy;
+    public GameObject MiniBoss;
 
     private void Start()
     {
         Enemy = GameObject.Find("Enemy");
+        MiniBoss = GameObject.Find("MiniBoss");
         GetChildren(this.gameObject);
         if (this.gameObject.name == "Spawner")
         {         
             Destroy(gameObject, 2.0f);
         }
-        else EnemySpawn();
-        if (this.gameObject.name == "Enemy") Enemy.SetActive(false);
+        else if(this.gameObject.name == "EnemySpawner") EnemySpawn();
+        else if (this.gameObject.name == "MiniBossSpawner") MiniBossSpawn();
+        //if (this.gameObject.name == "Enemy" || this.gameObject.name == "MiniBoss") Enemy.SetActive(false);
     }
 
     private void EnemySpawn()
@@ -27,6 +30,16 @@ public class Spawner : MonoBehaviour
         GameObject enemy = Instantiate(Enemy, pos, rot) as GameObject;
         enemy.tag = "Enemy";
         enemy.name = "Enemy_copy";
+    }
+    private void MiniBossSpawn()
+    {
+        Vector3 force = transform.forward;
+        var pos = transform.position;
+        var rot = transform.rotation;
+
+        GameObject miniBoss = Instantiate(MiniBoss, pos, rot) as GameObject;
+        miniBoss.tag = "MiniBoss";
+        miniBoss.name = "MiniBoss_copy";
     }
 
     void GetChildren(GameObject obj)
