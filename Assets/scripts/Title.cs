@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class Title : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI titleText_1;
-    [SerializeField] private GameObject MoveInput;
+    [SerializeField] private GameObject TitleAction;
+    [SerializeField] private GameObject HandStatus;
     [SerializeField] private ReSetTrackingSpace resetTrackingSpace;
     [SerializeField] private OVRScreenFade ovrScreenFade;
 
@@ -19,7 +20,8 @@ public class Title : MonoBehaviour
 
     private void Start()
     {
-        MoveInput.SetActive(false);
+        TitleAction.SetActive(false);
+        HandStatus.SetActive(false);
         GameStart = false;
         audioSource = GetComponent<AudioSource>();
     }
@@ -28,9 +30,10 @@ public class Title : MonoBehaviour
     {
         if (OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch))
         {
-            titleText_1.text = "Bボタン、またはYボタンを押して\n銃を拾い、目の前の球体を撃つと\nスタートします。";
+            titleText_1.text = "BボタンまたはYボタンを押して\n銃を拾い、目の前の球体を撃つと\nスタートします。";
             resetTrackingSpace.FirstStickInput = true;
-            MoveInput.SetActive(true);
+            TitleAction.SetActive(true);
+            HandStatus.SetActive(true);
         }
         if (GameStart)
         {

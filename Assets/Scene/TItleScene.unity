@@ -1320,7 +1320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ab4faf8ca81264b999918ba505ccc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handStatus: {fileID: 1075786819}
+  handStatus: {fileID: 1495641371}
 --- !u!1 &54025399
 GameObject:
   m_ObjectHideFlags: 0
@@ -4550,7 +4550,7 @@ GameObject:
   - component: {fileID: 201224864}
   - component: {fileID: 201224863}
   m_Layer: 0
-  m_Name: MoveInput
+  m_Name: TItleAction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4588,7 +4588,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &202589269
 GameObject:
@@ -20297,7 +20297,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   titleText_1: {fileID: 1537998212}
-  MoveInput: {fileID: 201224862}
+  TitleAction: {fileID: 201224862}
+  HandStatus: {fileID: 1495641370}
   resetTrackingSpace: {fileID: 1617213658}
   ovrScreenFade: {fileID: 2085881319}
   SE_HitTarget: {fileID: 8300000, guid: 7c94b11b93d7482489a2eac73ba1af39, type: 3}
@@ -20829,7 +20830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a62fc7d657f49b1408aa72972fc0f594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handStatus: {fileID: 1075786819}
+  handStatus: {fileID: 1495641371}
 --- !u!54 &978512425
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -23217,52 +23218,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1071943572}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1075786816
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1075786817}
-  - component: {fileID: 1075786819}
-  m_Layer: 0
-  m_Name: PlayerStatus
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1075786817
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1075786816}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.08932948, y: 0.27045, z: 0.032030523}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1075786819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1075786816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65cf32d049ffffa468a4331de95bf8b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rightHandStatus: 
-  _leftHandStatus: 
 --- !u!1 &1078959089
 GameObject:
   m_ObjectHideFlags: 0
@@ -29250,7 +29205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e10b9333e836dd04885f09663e8e8c4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handStatus: {fileID: 1075786819}
+  handStatus: {fileID: 1495641371}
   Original_Bullet: {fileID: 5555676923061421367, guid: 599c26277025e044684b19c53ada264c,
     type: 3}
   HandGunModel_Right: {fileID: 1542226714}
@@ -32153,6 +32108,52 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1490867557}
   m_Mesh: {fileID: 7718662893383318277, guid: d2f0da3998423f44594868ffed55c3e6, type: 3}
+--- !u!1 &1495641370
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1495641372}
+  - component: {fileID: 1495641371}
+  m_Layer: 0
+  m_Name: HandStatus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1495641371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495641370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65cf32d049ffffa468a4331de95bf8b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rightHandStatus: 
+  _leftHandStatus: 
+--- !u!4 &1495641372
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495641370}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1501198581
 GameObject:
   m_ObjectHideFlags: 0
@@ -33309,7 +33310,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 50}
+  m_SizeDelta: {x: 800, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1537998212
 MonoBehaviour:
@@ -33333,8 +33334,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press "A" Button
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a2cfa2e3727db094a931df99af29c6ec, type: 2}
+  m_sharedMaterial: {fileID: -5425055991521092721, guid: a2cfa2e3727db094a931df99af29c6ec,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -33358,8 +33360,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -36082,7 +36084,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1626747605
 GameObject:
