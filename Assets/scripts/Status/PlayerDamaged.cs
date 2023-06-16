@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(AudioSource))]
 public class PlayerDamaged : MonoBehaviour
@@ -21,6 +22,7 @@ public class PlayerDamaged : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "EndArea") SceneManager.LoadScene("EndScene");
         if (other.tag != "EnemyShot") return;
         if (coolTime > 0) return;
         hpManager.Damage(1);

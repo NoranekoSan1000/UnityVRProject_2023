@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class HPManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI HpText;
-    public int HP;
+    public static int HP;
 
     private void Start()
     {

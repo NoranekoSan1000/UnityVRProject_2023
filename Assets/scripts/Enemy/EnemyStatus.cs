@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemyStatus : MonoBehaviour
 {
     [SerializeField] private GameObject PlayerCenter;
+    [SerializeField] private GameObject EndObject;
 
     [SerializeField] private ScoreManager _scoreManager;
     [SerializeField] private AudioClip SE_HitTarget;
@@ -14,6 +15,7 @@ public class EnemyStatus : MonoBehaviour
 
     [SerializeField] private int hp;
     [SerializeField] private int score;
+
 
     private bool alive; 
     private float soundCT = 0;
@@ -44,7 +46,8 @@ public class EnemyStatus : MonoBehaviour
 
     private void dead()
     {
-        if(alive) present();
+        if (transform.parent.gameObject.name == "MiniBoss_copy") EndObject.SetActive(true);
+        if (alive) present();
         Destroy(transform.parent.gameObject,0.1f);
     }
     private void present()
