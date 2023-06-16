@@ -11,7 +11,7 @@ public class HPManager : MonoBehaviour
 
     private void Start()
     {
-        HP = 10;
+        HP = 15;
     }
 
     private void Update() 
