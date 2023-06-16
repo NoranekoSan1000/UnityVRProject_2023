@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class HPManager : MonoBehaviour
 {
@@ -15,7 +16,8 @@ public class HPManager : MonoBehaviour
 
     private void Update() 
     {
-        HpText.text = "HP : " + HP;    
+        HpText.text = "HP : " + HP;
+        if (HP <= 0) SceneManager.LoadScene("EndScene");
     }
 
     public void Damage(in int damage)

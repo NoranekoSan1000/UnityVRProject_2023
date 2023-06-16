@@ -15,6 +15,7 @@ public class Title : MonoBehaviour
     [SerializeField] private AudioClip SE_HitTarget;
     AudioSource audioSource;
 
+    private bool pressA = false;
     private bool GameStart = false;
     private float Timer = 0;
 
@@ -28,12 +29,13 @@ public class Title : MonoBehaviour
 
     private void Update()
     {
-        if (OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch))
+        if (!pressA && OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch))
         {
             titleText_1.text = "BボタンまたはYボタンを押して\n銃を拾い、目の前の球体を撃つと\nスタートします。";
             resetTrackingSpace.FirstStickInput = true;
             TitleAction.SetActive(true);
             HandStatus.SetActive(true);
+            pressA = true;
         }
         if (GameStart)
         {
