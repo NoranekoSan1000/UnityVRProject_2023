@@ -19,7 +19,7 @@ public class TimeManager : MonoBehaviour
 
     void Update()
     {
-        if(TimerActive && timer > 0) timer -= Time.deltaTime;
+        if(TimerActive) timer -= Time.deltaTime;
         if(timer <= 0) timerText.text = "0";
         else timerText.text = (int)timer + "";
 

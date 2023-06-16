@@ -12,8 +12,11 @@ public class EnemyStatus : MonoBehaviour
     [SerializeField] private AudioClip SE_Dead;
     AudioSource audioSource;
 
-    private bool alive;
-    private int hp = 10;
+    [SerializeField] private int hp;
+    [SerializeField] private int score;
+
+    private bool alive; 
+    private float soundCT = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +27,7 @@ public class EnemyStatus : MonoBehaviour
 
     private void Update()
     {
+        soundCT -= Time.deltaTime;
         transform.position = transform.parent.gameObject.transform.position;
         LookEnemy();
         if (hp <= 0) dead();
@@ -33,19 +37,19 @@ public class EnemyStatus : MonoBehaviour
     {
         if (other.tag != "PlayerShot") return;
             hp -= 1;
-        if (hp > 0) audioSource.PlayOneShot(SE_HitTarget);
-        else audioSource.PlayOneShot(SE_Dead);
+        if (hp > 0 && soundCT < 0) audioSource.PlayOneShot(SE_HitTarget);
+        soundCT = 0.2f;
         Destroy(other.gameObject);
     }
 
     private void dead()
     {
         if(alive) present();
-        Destroy(transform.parent.gameObject,0.3f);
+        Destroy(transform.parent.gameObject,0.1f);
     }
     private void present()
     {
-        _scoreManager.AddScore(100);
+        _scoreManager.AddScore(score);
         alive = false;
     }
 

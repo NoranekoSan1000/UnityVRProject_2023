@@ -10,16 +10,21 @@ public class PlayerDamaged : MonoBehaviour
     [SerializeField] private AudioClip SE_Damaged;
     AudioSource audioSource;
 
+    private float coolTime = 0;
+
     // Update is called once per frame
     void Update()
     {
+        if (coolTime >= 0) coolTime -= Time.deltaTime;
         audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag != "EnemyShot") return;
+        if (coolTime > 0) return;
         hpManager.Damage(1);
+        coolTime = 1.5f;
         audioSource.PlayOneShot(SE_Damaged);
         Destroy(other.gameObject);
     }

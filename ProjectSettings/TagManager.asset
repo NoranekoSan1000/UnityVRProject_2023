@@ -13,6 +13,9 @@ TagManager:
   - Enemy
   - AssaultRifle
   - ShotGun
+  - ShotGunMan
+  - MiniBoss
+  - AssaultMan
   layers:
   - Default
   - TransparentFX
