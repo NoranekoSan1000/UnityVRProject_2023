@@ -8,6 +8,8 @@ public class ReSetTrackingSpace : MonoBehaviour
     [SerializeField] private GameObject TrackingSpace;
     [SerializeField] private GameObject CenterCam;
 
+    public bool FirstStickInput = false;
+
     void Update()
     {
         var area = TrackingSpace.transform.position;
@@ -23,7 +25,11 @@ public class ReSetTrackingSpace : MonoBehaviour
         area.x = -(center.x - arm.x);
 
 
-        if (Input.GetKeyDown(KeyCode.T)) TrackingSpace.transform.position = new Vector3(area.x, area.y, area.z);
+        if (FirstStickInput)
+        {
+            TrackingSpace.transform.position = new Vector3(area.x, area.y, area.z);
+            FirstStickInput = false;
+        }
     }
 
 }
