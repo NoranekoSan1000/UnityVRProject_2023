@@ -30,4 +30,6 @@ public class PlayerDamaged : MonoBehaviour
         audioSource.PlayOneShot(SE_Damaged);
         Destroy(other.gameObject);
     }
+
+
 }
